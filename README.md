@@ -2,6 +2,65 @@
 
 ## Linux Commands
 
+### Shell
+
+El intérprete de comandos ejecuta las instrucciones introducidas con el teclado o en un script y devuelve los resultados. Este intérprete es un programa comúnmente llamado **_shell_**. Es una interfaz que funciona en modo texto entre el núcleo de Linux y el usuario. Este _shell_ funciona en un terminal y como todo programa puede ser compilado y ejecutado en otras plataformas.
+
+Originalmente un terminal era una verdadera máquina con una pantalla y un teclado que se conectaba a un servidor central. En la actualidad, un terminal es un programa que emula estos terminales:
+
+- las **consolas virtuales de texto**, el modo por defecto de Linux cuando arranca sin entorno gráfico
+- las **consolas o terminales gráficos** como _xterm_, _eterm_ o _konsole_ que son emuladores de terminal en un entorno gráfico
+
+Hay varios _shells_ como _Bourne Shell_ (sh), _C-Shell_ (csh), _Korn Shell_ (ksh) o _Z-Shell_ (zsh). El _shell_ de referencia en Linux es **_Bourne Again Shell_** (bash).
+
+```sh
+user@UBUNTU:~$
+```
+
+- _user_ es el nombre de inicio de sesión o login del usuario
+- _UBUNTU_ es el nombre del anfitrión (_hostname_), el nombre lógico de la máquina conectada al terminal
+- _~_ es el carácter que indica que se encuentra en el directorio personal
+- _>_ o _$_ es la terminación estándar del bash para un usuario sin privilegios
+
+```sh
+# El comando 'pwd' permite saber el directorio actual
+user@UBUNTU:~$ pwd
+/home/user
+```
+
+Exiten algunos atajos de teclado:
+
+- `Ctrl + a` - ir al principio de la línea
+- `Ctrl + e` - ir al final de la línea
+- `Ctrl + u` - borra desde el cursor hasta el principio de la línea
+- `Ctrl + k` - borra desde el cursor hasta el final de la línea
+- `Ctrl + l` - borrar el contenido del terminal y mostrar la línea de comandos en la parte superior
+
+```sh
+# Los comandos se pueden encadenar separados por `;`:
+$ date; pwd; uname
+```
+
+Existen dos tipos de comandos:
+
+- **comandos externos** que son programas binarios presentes como archivos. Al ejecutarse se cargan en memoria y se inician como proceso.
+- **comandos internos** que son propios del _shell_ y se ejecutan en él.
+
+> NOTA: También hay otros tipos como los _alias_ de comandos que son atajos de comandos propios del shell
+
+El comando `type` permite distinguir los tipos de comandos:
+
+```sh
+# Comando interno
+$ type pwd  # pwd is a shell builtin
+
+# Comando externo
+$ type date  # date is hashed (/usr/bin/date)
+
+# Alias de comando
+$ type ll  # ll is aliased to `ls -alF'
+```
+
 ### Ayuda
 
 ```sh
@@ -117,9 +176,11 @@ $ id
 
 # Ver el histórico de comandos ejecutados en la consola
 $ history
+$ fc -l
 
 # Repetir un comando del histórico
-$ !<number>
+$ !{number}
+$ fc -s {number}
 
 # Repetir un comando con sudo
 $ sudo !!
@@ -205,6 +266,9 @@ $ pwd
 ### File and Directory
 
 ```sh
+# Mostrar la descripción de un fichero
+$ file {file.ext}
+
 # Display disk space occupied by current directory (-h for human-readable, -s summarize)
 $ du -sh {folder}
 

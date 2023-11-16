@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:alxgcrz/_learning_linux_.git"
   },
   "dependencies": {
     "tldr": "^3.4.0"
