@@ -105,22 +105,28 @@ El manual de ayuda en línea se compone de secciones:
 
 ```sh
 # Update the packages repository
-$ apt update
+$ sudo apt update
 
 # Upgrade packages in bulk
-$ apt upgrade
+$ sudo apt upgrade
 
-# Search for a package named 'htop', for example
-$ apt search htop
+# Apply all available updates
+$ sudo apt update && sudo apt upgrade
+
+# List available updates
+$ apt list --upgradable
+
+# Search for a package
+$ apt search <string>
 
 # Show information about a package
 $ apt show htop
 
-# Install a package named htop
-$ sudo apt install htop
+# Install a package
+$ sudo apt install <package>
 
-# Remove a package named htop
-$ sudo apt remove htop
+# Remove a package
+$ sudo apt remove <package>
 
 # Install multiple packages, for example htop and less
 $ sudo apt install htop less
@@ -136,6 +142,11 @@ $ dpkg-query -W --showformat='${Installed-Size;10}\t${Package}\n' | sort -k1,1n
 
 # Listado de paquetes instalados ordenados por tamaño y mostrando prioridad
 $ dpkg-query -W --showformat='${Installed-Size;10}\t${Priority}\t${Package}\n' | sort -k1,1n
+
+# Which package provides this file?
+$ sudo apt install apt-file
+$ sudo apt-file update
+$ apt-file <filename or command>
 ```
 
 ### System Information
@@ -148,7 +159,7 @@ $ uname -a
 $ uname -r
 
 # Display distro description
-$ lsb_release -d
+$ lsb_release -a
 
 # Show how long the system has been running + load
 $ uptime
@@ -159,13 +170,16 @@ $ hostname
 # Display the IP addresses of the host
 $ hostname -I
 
+# Get the list of recent logins
+$ last
+
 # Show system reboot history
 $ last reboot
 
 # Show the current date and time
 $ date
 
-# Display who is online
+# Show which users are logged in
 $ w
 
 # Who you are logged in as
@@ -173,6 +187,18 @@ $ whoami
 
 # Who you are
 $ id
+
+# Get password expiration date for <user>
+$ chage -l <user>
+
+# Set password expiration date for <user>
+$ sudo chage <user>
+
+# Lock a user account
+$ sudo passwd -l <user>
+
+# Unlock a user account
+$ sudo passwd -u <user>
 
 # Ver el histórico de comandos ejecutados en la consola
 $ history
@@ -187,6 +213,15 @@ $ sudo !!
 
 # Visualizar el log del sistema
 $ sudo -g adm more /var/log/syslog
+
+# Get all running services
+$ systemctl --state running
+
+# Start or stop a service
+$ service <service> start/stop
+
+# Monitor new logs for a service
+$ journalctl -u <service> --since now -f
 ```
 
 ### Hardware Information
@@ -215,6 +250,13 @@ $ cat /proc/1/environ
 
 # Display free and used memory ( -h for human-readable, -m for MB, -g for GB.)
 $ free -h
+
+# Get system time
+$ timedatectl status
+
+# Set system timezone
+$ timedatectl list-timezones
+$ sudo timedatectl set-timezone <zone>
 ```
 
 ### System Monitoring, Statistics, Debugging
@@ -273,7 +315,7 @@ $ file {file.ext}
 $ du -sh {folder}
 
 # Ver el espacio en el disco
-$ df -h`
+$ df -h
 
 # Execute “df -h”, showing periodic updates every 1 second (-d flag shows visual updates)
 $ watch -n1 df -h
@@ -291,9 +333,9 @@ $ touch {file1} {file2}
 $ touch {1..10}.txt # Create 1.txt, 2.txt, 3.txt, etc...
 
 # Create a new directory
-$ mkdir {dir1}
+$ mkdir <dir1>
 
-# Create a directory tree using -p option
+# Create a directory tree recursively
 $ mkdir -p dir1/dir2/dir3
 
 # List the directory tree using tree command
@@ -303,7 +345,7 @@ $ tree {dir1}
 $ cp -v {file1} {dir1/file1-copy}
 
 # Copy directory and all it’s content to a new directory
-$ cp -vr {dir1} {dir1-copy}
+$ cp -vr {dir1} {dir1-copy} # (-r for recursive)
 
 # Rename a file
 $ mv -v {file1} {file1-rename}
@@ -315,12 +357,12 @@ $ mv -v {file1} {dir1}
 $ rm {file1}
 
 # Remove a directory and its contents recursively (-v option for enabling verbose mode)
-$ rm -vr {dir1}
+$ rm -vrf {dir1}
 
 # Create a symbolic link (pointer) to a file or directory
 $ ln -s {file1} {file1-link}
 
-# Write a simple text to a file
+# Create and write a simple text to a file
 $ echo "hello, world!" > hello.txt
 
 # View the contents of a file
@@ -337,6 +379,22 @@ $ tail -n 20 hello.txt
 
 # Display the last 10 lines of a file and follow the file as it updated
 $ tail -f hello.txt
+
+# Mostrar la ubicación de un ejecutable
+$ whereis date # date is /usr/bin/date
+
+# Mostrar comando en el PATH
+$ which date # /usr/bin/date
+
+# Quick file search
+$ sudo updatedb
+$ locate <string>
+
+# Recortar fichero en partes
+$ split -b 150m {fichero} {prefijo} # -m for MB
+
+# Reconstruir fichero
+$ cat {prefijo} > {fichero}
 ```
 
 ```sh
@@ -349,13 +407,14 @@ $ sudo rsync -ah --progress {source} {destination}
 
 ```sh
 # Buscar ficheros con una extensión en concreto
-$ find . -type f -name *.jpg
+$ find . -type f -name "*.jpg"
 
 # Buscar y listar ficheros con una determinada extensión
-$ find . -type f -name *.jpg -exec ls'{}' \;
+$ find . -type f -name "*.jpg" -exec ls {} \;
+$ find . -type f -name "*.jpg" -ls
 
 # Buscar y borrar ficheros con confirmación
-$ find . -type f -name *.jpg -exec rm -i '{}' \;
+$ find . -type f -name *.jpg -exec rm -v {} \;
 ```
 
 #### Montar unidades
@@ -416,8 +475,12 @@ $ ip addr
 # Display information of eth0 interface
 $ ip addr show eth0
 
-#Display IP routing table
+# Display IP routing table
 $ ip route
+
+# Enable/disable interface
+$ ip link set <interface> up
+$ ip link set <interface> down
 
 # Ping a hostname or IP address
 $ ping google.com
@@ -435,7 +498,8 @@ $ host medium.com     # IPv4 addresses
 
 # Display hostname and IP address of the local machine
 $ hostname
-$ hostname -i
+$ hostname -i   # Display the network address(es) of the host name
+$ hostname -I   # Display all network addresses of the host
 
 # Download files from a remote HTTP server
 $ wget {URL}
@@ -447,7 +511,16 @@ $ wget -r --no-parent {URL}
 $ curl --output 5MB.zip {URL}
 
 # Display all process listening on TCP or UDP ports
-$ netstat -plunt`
+$ netstat -plunt
+
+# Get the IP address of all interfaces
+$ networkctl status
+
+# Manage firewall rules
+$ sudo ufw enable         # enable firewall
+$ sudo ufw status         # list rules
+$ sudo ufw allow <port>   # allow port
+$ sudo ufw deny <port>    # deny port
 ```
 
 ### Process Management
@@ -466,7 +539,7 @@ $ top
 $ htop
 
 # Look-up process ID based on a name
-pgrep {name}
+$ pgrep {name}
 
 # Kill a process with a given process ID. By default TERM signal is sent
 $ kill PID
@@ -492,11 +565,14 @@ $ bg
 # Brings the most recent background job to the foreground
 $ fg
 
-# Brings job N to the foreground
-$ fg N
+# Brings job <n> to the foreground
+$ fg <n>
 
 # Kill job N
 $ kill %N
+
+# Run command in the background
+$ <command> &
 ```
 
 ### File Permissions
@@ -641,6 +717,7 @@ $ source ~/.bashrc
 - <https://www.gnu.org/software/software.html>
 - <https://linuxcommand.org/lc3_man_page_index.php>
 - <https://terminaldelinux.com/terminal/>
+- <https://www.pixelbeat.org/cmdline.html>
 
 ## Licencia
 
