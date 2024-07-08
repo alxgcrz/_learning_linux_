@@ -85,6 +85,12 @@ $ man -k passwd # Muestra todos los comandos que contienen 'passwd'
 
 # Ayuda en formato info (enlaces, info más detallada, etcétera...)
 $ info {comando}
+
+# The 'apropos' command helps users find any command using its man pages
+# NOTA: si 'apropos' devuelve "nothing apropiate" hay que ejecutar "$ mandb" como administrador
+$ apropos {keyword}
+$ apropos copy
+$ apropos list
 ```
 
 #### Secciones
@@ -706,7 +712,7 @@ $ source ~/.bashrc
 
 ---
 
-## Enlaces de interés
+## Referencias
 
 - <https://devdoc.net/linux/UnixToolbox.html>
 - <https://tldr.sh/>
