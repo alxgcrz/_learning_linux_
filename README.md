@@ -1,5 +1,7 @@
 # LINUX
 
+> :warning: **DOCUMENTO EN DESARROLLO** :warning:
+
 ## Linux Commands
 
 ### Shell
@@ -46,7 +48,7 @@ Existen dos tipos de comandos:
 - **comandos externos** que son programas binarios presentes como archivos. Al ejecutarse se cargan en memoria y se inician como proceso.
 - **comandos internos** que son propios del _shell_ y se ejecutan en él.
 
-> NOTA: También hay otros tipos como los _alias_ de comandos que son atajos de comandos propios del shell
+> :information_source: También hay otros tipos como los **_alias_ de comandos** que son atajos de comandos propios del shell
 
 El comando `type` permite distinguir los tipos de comandos:
 
@@ -724,6 +726,7 @@ $ source ~/.bashrc
 - <https://linuxcommand.org/lc3_man_page_index.php>
 - <https://terminaldelinux.com/terminal/>
 - <https://www.pixelbeat.org/cmdline.html>
+- <https://www.baeldung.com/linux/>
 
 ## Licencia
 
