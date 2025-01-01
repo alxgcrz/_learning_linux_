@@ -95,8 +95,6 @@ $ apropos copy
 $ apropos list
 ```
 
-#### Secciones
-
 El manual de ayuda en línea se compone de secciones:
 
 1. Instrucciones ejecutables o comandos del shell
@@ -157,6 +155,37 @@ $ sudo apt-file update
 $ apt-file <filename or command>
 ```
 
+### System
+
+```sh
+# Shuts down the system
+$ shutdown
+
+# Reboots the system
+$ reboot
+
+# Updates GRUB configurations
+$ update-grub
+
+# Generates a new GRUB configuration
+$ grub-mkconfig
+
+# Installs the GRUB bootloader
+$ grub-install
+
+# Permite configurar el sistema para que el próximo arranque sea desde una entrada específica de GRUB
+$ grub-reboot número_de_entrada
+
+# Executes commands as another user
+$ sudo
+
+# Safely edits the sudoers file
+$ visudo
+
+# Repetir un comando con sudo
+$ sudo !!
+```
+
 ### System Information
 
 ```sh
@@ -181,6 +210,9 @@ $ hostname -I
 # Get the list of recent logins
 $ last
 
+# Displays the most recent login for all users
+$ lastlog
+
 # Show system reboot history
 $ last reboot
 
@@ -190,11 +222,38 @@ $ date
 # Show which users are logged in
 $ w
 
-# Who you are logged in as
+# Ver el histórico de comandos ejecutados en la consola
+$ history
+$ fc -l
+
+# Repetir un comando del histórico
+$ !{number}
+$ fc -s {number}
+
+# Visualizar el log del sistema
+$ sudo -g adm more /var/log/syslog
+
+# Get all running services
+$ systemctl --state running
+
+# Start or stop a service
+$ service <service> start/stop
+
+# Monitor new logs for a service
+$ journalctl -u <service> --since now -f
+```
+
+### User Information
+
+```sh
+# Displays the current user
 $ whoami
 
-# Who you are
+# Prints user and group IDs
 $ id
+
+# Shows the groups a user belongs to
+$ groups
 
 # Get password expiration date for <user>
 $ chage -l <user>
@@ -208,28 +267,8 @@ $ sudo passwd -l <user>
 # Unlock a user account
 $ sudo passwd -u <user>
 
-# Ver el histórico de comandos ejecutados en la consola
-$ history
-$ fc -l
-
-# Repetir un comando del histórico
-$ !{number}
-$ fc -s {number}
-
-# Repetir un comando con sudo
-$ sudo !!
-
-# Visualizar el log del sistema
-$ sudo -g adm more /var/log/syslog
-
-# Get all running services
-$ systemctl --state running
-
-# Start or stop a service
-$ service <service> start/stop
-
-# Monitor new logs for a service
-$ journalctl -u <service> --since now -f
+# Modifies user account
+$ usermod
 ```
 
 ### Hardware Information
@@ -277,15 +316,27 @@ $ top
 $ sudo apt install htop
 $ htop
 
-# Display processor related statistics (refresh every 1 second)
+# System performance tools for the Linux operating system (https://github.com/sysstat/sysstat)
 $ sudo apt install sysstat
+
+# Enable System Activity Report
+$ nano /etc/default/sysstat
+
+# Display processor related statistics (refresh every 1 second) (sysstat)
 $ mpstat 1
 
-# Display virtual memory statistics (refresh every 1 second)
+# Display virtual memory statistics (refresh every 1 second) (sysstat)
 $ vmstat 1
 
-# Display disk I/O statistics (refresh every 1 second)
+# Display disk I/O statistics (refresh every 1 second) (sysstat)
 $ iostat 1
+
+# System Activity Report (sysstat)
+$ sar
+
+# Comprehensive system monitoring tool
+$ sudo apt install nmon
+$ nmon
 
 # List all open files on the system
 $ lsof
@@ -297,7 +348,7 @@ $ lsof -u {USER}
 $ lsof -p {PID}
 ```
 
-### Directory Navigation
+### Files and Folders
 
 ```sh
 # Change to '/home' directory
@@ -311,11 +362,7 @@ $ cd ..
 
 # Display the present working directory
 $ pwd
-```
 
-### File and Directory
-
-```sh
 # Mostrar la descripción de un fichero
 $ file {file.ext}
 
@@ -425,7 +472,7 @@ $ find . -type f -name "*.jpg" -ls
 $ find . -type f -name *.jpg -exec rm -v {} \;
 ```
 
-#### Montar unidades
+#### Mount
 
 ```sh
 # Ver las particiones del sistema, tanto montadas como no montadas
@@ -449,7 +496,7 @@ $ sudo umount /dev/sdh1
 $ sudo apt install exfat-fuse exfat-utils
 ```
 
-#### Utilidad compresión ficheros
+#### File compression
 
 ```sh
 # Comprimir un directorio usando la utilidad 'zip'
