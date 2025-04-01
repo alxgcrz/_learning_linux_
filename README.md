@@ -766,25 +766,14 @@ $ source ~/.bashrc
 ### Linux
 
 - <https://devdoc.net/linux/UnixToolbox.html>
-- <https://tldr.sh/>
-- <https://tldr.inbrowser.app/>
-- <https://linuxcommandlibrary.com/>
-- <https://www.commandlinefu.com/>
-- <https://explainshell.com/>
 - <https://www.gnu.org/software/software.html>
-- <https://linuxcommand.org/lc3_man_page_index.php>
+- <https://www.gnu.org/software/coreutils/manual/html_node/Concept-index.html>
 - <https://terminaldelinux.com/terminal/>
 - <https://www.pixelbeat.org/cmdline.html>
 - <https://www.baeldung.com/linux/>
 - ⭐🎓 [Digital Ocean - Find all the resources you need to go from development to production](https://www.digitalocean.com/community)
-- [atech/postal: 📨 A fully featured open source mail delivery platform for incoming & outgoing e-mail](https://github.com/atech/postal)
-- [Transfer.sh, comparte archivos fácilmente desde la terminal](https://ubunlog.com/transfer-compartir-archivos-terminal/)
-- [Una alternativa rápida y abierta a Windows y macOS ⋅ elementary OS](https://elementary.io/es/)
-- ⭐ [Aptik Migration Utility](https://teejeetech.in/aptik/)
 - 📰 [Linux y Software Libre. Tutoriales, aplicaciones de Software Libre, distribuciones de Linux, recomendaciones, noticias de Linux y Software Libre.](https://blog.desdelinux.net/)
-- ⭐ [FreeNAS is an operating system that can be installed on virtually any hardware platform to share data over a network](https://www.freenas.org/)
 - [VeraCrypt is a free open source disk encryption software for Windows, Mac OSX and Linux](https://www.veracrypt.fr/en/Home.html)
-- [DistroWatch is a website dedicated to talking about, reviewing and keeping up to date with open source operating systems](https://distrowatch.com/)
 
 ### Linux - Learning
 
@@ -805,7 +794,7 @@ $ source ~/.bashrc
 - [Linux Command Library](https://linuxcommandlibrary.com/)
 - [Eugeny/terminus: A terminal for a more modern age](https://github.com/Eugeny/terminus)
 - ⭐ [fish - the friendly interactive shel](https://github.com/fish-shell/fish-shell)
-- 📕 [The Linux Command Line by William E. Shotts, Jr.](http://linuxcommand.org/tlcl.php)
+- [The Linux Command Line by William E. Shotts, Jr.](https://linuxcommand.org)
 - [WTF - the terminal dashboard](https://wtfutil.com/)
 - [BusyBox - The Swiss Army Knife of Embedded Linux](https://busybox.net/downloads/BusyBox.html)
 - [Spotify for the terminal written in Rust](https://github.com/Rigellute/spotify-tui)
@@ -816,6 +805,7 @@ $ source ~/.bashrc
 - [Reproductores de música para la línea de comandos en Ubuntu](https://ubunlog.com/reproductores-de-musica-para-la-linea-de-comandos/)
 - [A cat(1) clone with syntax highlighting and Git integration](https://github.com/sharkdp/bat)
 - [Blending the terminal in a GUI world](https://github.com/jarun)
+- [GNU Midnight Commander (or mc) is a visual, dual-pane file manager, like as Norton Commander](https://midnight-commander.org/)
 
 ### Linux - Scripting
 
@@ -851,6 +841,12 @@ $ source ~/.bashrc
 - 🇪🇸🎓 [Testear los discos duros utilizando smartctl](http://claves-de-linux.blogspot.com.es/2012/10/smartctl-checkear-disco-duro.html)
 - [Webmin is a web-based interface for system administration for Unix](http://www.webmin.com/)
 - [Cockpit is an interactive server admin interface](https://cockpit-project.org/)
+
+### Linux - Distros
+
+- [DistroWatch is a website dedicated to talking about, reviewing and keeping up to date with open source operating systems](https://distrowatch.com/)
+- [Una alternativa rápida y abierta a Windows y macOS ⋅ elementary OS](https://elementary.io/es/)
+- ⭐ [Welcome to the TrueNAS Community](https://www.truenas.com/truenas-community-edition/)
 
 ## Licencia
 
